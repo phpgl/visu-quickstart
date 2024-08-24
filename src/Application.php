@@ -94,7 +94,7 @@ class Application extends QuickstartApp
 
         // draw a ball
         $this->vg->beginPath();
-        $this->vg->circle($this->ballPosition->x, $this->ballPosition->y, $this->ballRadius);
+        $this->vg->circle($finalPos->x, $finalPos->y, $this->ballRadius);
         $this->vg->fillColor(VGColor::red());
         $this->vg->fill();
     }
