@@ -85,6 +85,13 @@ class Application extends QuickstartApp
         // transform the VG space by the camera view
         $this->camera->transformVGSpace($this->viewport, $this->vg);
 
+        // use the delta time to interpolate the ball position
+        // you do not have to do this, but it will make the ball move buttery smooth 
+        // especially on high fps screens
+        $finalPos = $this->ballPosition->copy();
+        $finalPos->x = $finalPos->x + $this->ballVelocity->x * $context->compensation;
+        $finalPos->y = $finalPos->y + $this->ballVelocity->y * $context->compensation;
+
         // draw a ball
         $this->vg->beginPath();
         $this->vg->circle($this->ballPosition->x, $this->ballPosition->y, $this->ballRadius);
